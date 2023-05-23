@@ -1,0 +1,30 @@
+Lab 3 - Del C.1 Förberedelse
+
+Alternatives:
+
+1.
+    - Nej, det gör föräldertråden.
+    - Ja, direkt.
+    - Nej, det går absolut inte att få tag på
+    - Ja.
+    - Nej, inte alls, eftersom vi behöver ett unikt process-id för att lägga till processen i processlistan.
+2.
+    - Nej, föräldern kör thread_create och är därför den som lägger till pid i listan.
+    - Ja, det kan lät ordnas, men det är välidt fel, eftersom vi måste ta från parametrarna som är tänkt skickas till processen
+    - Ja, direkt.
+    - Ja, eftersom processen inte är startad ännu.
+    - Nej, eftersom det troligtvis inte är tänkt att vi ska implementera detta i thread_create, speciellt eftersom vi inte explicit har tillgång till process-listan och parent-id från thread_create.
+3.
+    - Ja, när start_process får success kommer den lägga till sin egen process i processlistan.
+    - Ja, det kan lätt ordnas, eftersom förälderns process-id kan passeras genom parameters_to_start_process.
+    - Ja, direkt.
+    - Ja, eftersom processen startas i slutet av start_process.
+    - Ja, absolut
+4.
+    - Nej, det gör parent-tråden
+    - Ja, direkt.
+    - Ja, direkt.
+    - Nej, eftersom processen redan är startad i start_process, och kan därför köras klart innan den läggs till i process-listan.
+    - Ja, ganska bra, dock kan processen hinna köra cleanup innan den läggs till i process-listan.
+
+We choose to implement alternative 3
